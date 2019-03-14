@@ -147,13 +147,4 @@ color:indianred;
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
 }
-.prof
-{
-	transition: transform 10s ease-in-out 2s;
-	}
-.prof:hover
-{
-	
-	transform:skew(360deg,360deg);
-
-}
+x
