@@ -14,16 +14,21 @@ table
    margin-top: 50px;
 }
 table,th,td
-{
 
-	border-style: groove;
-	border-width: 2px;
-	border-color: silver;
-	border-collapse: collapse;
-}
-th, td
 {
-	padding:15px 15px;
+	
+	border-collapse: separate;
+	border-spacing: 7px;
+}
+h2
+{
+	margin: 30px;
+}
+
+th, td, tr
+{
+	padding:25px 25px;
+	
 }
 th:hover,td:hover
 {
@@ -44,8 +49,7 @@ tr:nth-child(odd)
 .prof
 {
 	width: 400px;
-	height:400px;
-	
+	height:400px;	
 }
 
 li
@@ -77,7 +81,7 @@ list-style-position: inside;
 {
 	background-color:beige;
 	display: inline-block;
-	width:200px;
+	width:300px;
 	height: 40px;
 	font-size: 20px;
 	padding-top: 10px;
