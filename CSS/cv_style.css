@@ -22,12 +22,12 @@ table,th,td
 }
 h2
 {
-	margin: 2s0px;
+	margin: 10px;
 }
 
 th, td, tr
 {
-	padding:25px 25px;
+	padding:15px 15px;
 	
 }
 th:hover,td:hover
@@ -81,7 +81,7 @@ list-style-position: inside;
 {
 	background-color:beige;
 	display: inline-block;
-	width:290px;
+	width:240px;
 	height: 40px;
 	font-size: 20px;
 	padding-top: 10px;
