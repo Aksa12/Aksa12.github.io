@@ -1,0 +1,199 @@
+body
+{
+ width: 100%;
+}
+.navigation
+{
+width: 100%;
+height:50%;
+background-color: black;
+}
+.block
+{
+	font-family: 'Cinzel Decorative';
+	display: inline-block;	
+	color: maroon;
+	width:200px;
+	height:60px;
+	padding-top: 30px;
+	font-size: 25px;
+	text-decoration: none;
+	margin: 30px 10px 30px 50px;
+	text-align: center;
+	letter-spacing: 1.5px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    
+    
+}
+
+.block:hover
+{
+	
+	border: 3px outset darkslategrey;
+}
+
+.content
+{
+	
+	background-color: salmon;
+	overflow: hidden;
+	padding:100px;
+	text-align: center;
+	color:Maroon;
+}
+.intro
+{
+	padding-top:20px;
+	float: left;
+	width:50%;
+	 font-family: 'Cormorant Infant';
+}
+.intro h1
+{
+  text-transform: uppercase;
+	font-size: 70px;
+}
+.intro h3
+{
+
+	font-size: 30px;
+	font-style: italic;
+}
+.prof
+{
+	width: 400px;
+	height:400px;	
+}
+#gmail_logo
+{
+	width:50px;
+	height:50px;
+	border-radius: 50%;
+	margin-right:10px;
+vertical-align: baseline;
+transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1s; 
+}
+#home_logo
+{
+	width:50px;
+	height:50px;
+	border-radius: 50%;
+	vertical-align: baseline;
+	transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1s; 
+
+}
+.sm_icon
+{
+    width:50px;
+	height:50px;
+	border-radius: 50%;
+	margin:0 7px;
+	vertical-align: baseline;
+	display: inline-block;
+	transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1s; 
+}
+#gmail_logo:hover, #home_logo:hover,.sm_icon:hover
+{
+	border-style: outset;
+	border-color: gray;
+   transform: rotate(360deg);
+}
+.content p,.edu li
+{
+	font-family: sans-serif;
+	letter-spacing: 3px;
+	line-height: 40px;
+	color:white;
+}
+@keyframes name_animation
+{
+	0% {transform:rotateX(0deg);}
+	25% {transform:rotateX(60deg);}
+	50% {transform:rotateX(-60deg);}
+	75% {transform:rotateY(60deg);}
+	100% {transform:rotateY(-60deg);}
+}
+.main_name:hover,.heading:hover
+{
+	
+	animation-name:name_animation;
+	animation-duration: 6s;
+	animation-delay: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+.edu li
+{
+   padding:5px 0px;
+   margin: 20px 0px;
+   text-align: left;
+   color: white;
+
+}
+.edu li:hover
+{
+  background-color: coral;
+}
+.edu ul
+{
+ list-style-type: square;
+ list-style-position: inside;
+
+}
+
+.edu
+{
+	float: left;
+	width:40%;	
+	font-family: 'Cormorant Infant';
+	font-size:120%;
+}
+.separator
+{
+
+   border-left-style: solid;
+	border-left-width: 3px;
+	border-left-color: maroon;
+	margin-left: 20px;
+	padding-left:25px;
+}
+.heading
+{
+	text-align: center;
+	padding-top:70px;
+	text-transform: uppercase;
+	font-size: 60px;
+}
+.floating
+{
+	
+	float: left;
+	width:38%;
+	margin-top: 100px;
+}
+#youtube_icon
+{
+	width:170px;
+	height:100px;
+	margin-left:20px;
+	margin-top: -15px;
+	transition:transform 2s ease 1s; 
+}
+#youtube_icon:hover
+{  
+   transform: rotate(360deg);
+}
+.content a
+{
+
+	text-align: center;
+	
+	text-transform: uppercase;
+	font-size: 50px;
+	text-decoration: none;
+	color: Maroon;
+	font-family: 'Cormorant Infant';
+	font-weight: bolder;
+}
+
