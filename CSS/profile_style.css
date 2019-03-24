@@ -2,13 +2,13 @@ body
 {
  width: 100%;
 }
-.navigation
+.container-fluid .navigation
 {
 width: 100%;
 height:50%;
 background-color: black;
 }
-.block
+.container-fluid .block
 {
 	font-family: 'Cinzel Decorative';
 	display: inline-block;	
@@ -23,11 +23,12 @@ background-color: black;
 	letter-spacing: 1.5px;
     font-weight: bolder;
     text-transform: uppercase;
+    box-sizing: content-box;
     
     
 }
 
-.block:hover
+.container-fluid .block:hover
 {
 	
 	border: 3px outset darkslategrey;
@@ -42,23 +43,27 @@ background-color: black;
 	text-align: center;
 	color:Maroon;
 }
-.intro
+.col-md-8 
+{
+	padding:50px 0px 0px 50px;
+}
+.intro 
 {
 	padding-top:20px;
-	float: left;
-	width:50%;
-	 font-family: 'Cormorant Infant';
+	font-family: 'Cormorant Infant';
 }
 .intro h1
 {
   text-transform: uppercase;
-	font-size: 70px;
+font-size: 70px;
+font-weight: bolder;
 }
 .intro h3
 {
 
 	font-size: 30px;
 	font-style: italic;
+	font-weight: bolder;
 }
 .prof
 {
@@ -72,7 +77,7 @@ background-color: black;
 	border-radius: 50%;
 	margin-right:10px;
 vertical-align: baseline;
-transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1s; 
+transition: border 2s ease 1s, transform 2s ease 1s; 
 }
 #home_logo
 {
@@ -80,7 +85,7 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 	height:50px;
 	border-radius: 50%;
 	vertical-align: baseline;
-	transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1s; 
+	transition: border 2s ease 1s, transform 2s ease 1s;
 
 }
 .sm_icon
@@ -91,12 +96,11 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 	margin:0 7px;
 	vertical-align: baseline;
 	display: inline-block;
-	transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1s; 
+	transition: border 2s ease 1s, transform 2s ease 1s;
 }
 #gmail_logo:hover, #home_logo:hover,.sm_icon:hover
 {
-	border-style: outset;
-	border-color: gray;
+	border: 3px outset brown;
    transform: rotate(360deg);
 }
 .content p,.edu li
@@ -196,4 +200,5 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 	font-family: 'Cormorant Infant';
 	font-weight: bolder;
 }
+
 
