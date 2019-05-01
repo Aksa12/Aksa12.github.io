@@ -5,16 +5,20 @@
 	<link rel="stylesheet" type="text/css" href="CSS/profile_style.css">
 	<link href='https://fonts.googleapis.com/css?family=Cinzel Decorative' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Cormorant Infant' rel='stylesheet'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
       <div class="navigation">
-		<a class="block" href="index.html"><img id="home_logo" src="http://www.gifs.cc/home/yellow-chrome-blink-home.gif" alt="home_logo">Go Back?</a>
+		<a class="block" href="profile1.html"><img id="home_logo" src="http://www.gifs.cc/home/yellow-chrome-blink-home.gif" alt="home_logo">Go Back?</a>
 	</div>
 	<div class="content">
 		<div class="edu">
 			<h1 class="heading">Education</h1>
+			<h1 class="heading h_skills">Skills</h1>
+
 		</div>
-		<div class="edu separator">
+		<div class="edu1">
+			<div class="separator">
 			<h2>The National University of Science and Technology, H12</h2>
 			<ul>
 				<li>Bachelors of science in Computer Science</li>
@@ -28,6 +32,50 @@
 			</ul>
 		</div>
 
-	</div>
+			<div class="skill_container">
+			<div class="separator">
+			<h2>Web Developing</h2>
+			<div class="skill_bar">
+			  <div class="skills" id="web">90%</div>
+			</div>
+			<h2>JAVA</h2>
+			<div class="skill_bar">
+			  <div class="skills" id="java">80%</div>
+			</div>
+
+			<h2>C++</h2>
+			<div class="skill_bar">
+			  <div class="skills" id="cpp">65%</div>
+			</div>
+
+			<h2>Micrsoft Office</h2>
+			<div class="skill_bar">
+			  <div class="skills MO" id="MO">60%</div>
+			</div>
+		</div>
+		</div>
+		</div>
+
+	<script type="text/javascript">
+		$(function()
+      {
+      	$("li").hide();
+      	$("li").fadeIn(3000);
+      	$("#web").css({
+      		"width":"90%",
+      	})
+      	$("#java").css({
+      		"width":"70%",
+      	})
+      	$("#cpp").css({
+      		"width":"60%",
+      	})
+      	$("#MO").css({
+      		"width":"50%",
+      	})
+      })
+
+	</script>
+
 </body>
 </html>

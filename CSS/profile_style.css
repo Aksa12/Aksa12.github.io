@@ -36,23 +36,24 @@ background-color: black;
 
 .content
 {
+	background-image: url(https://img.freepik.com/free-photo/brown-concrete-wall-background_43665-111.jpg?size=626&ext=jpg);
 	
+	background-repeat:no-repeat;
+	background-size: cover;
 	background-color: salmon;
 	overflow: hidden;
 	padding:100px;
 	text-align: center;
 	color:Maroon;
+	font-weight: bold;
+	
 }
 .time h1
 {
-	font-size: 30px;
-	text-align: center;
+	font-size: 20px;
+	text-align: left;
 	color: white;
-	animation-name:name_animation1;
-	animation-duration: 4s;
-	animation-delay: 1s;
-	animation-timing-function: linear;
-	animation-iteration-count: 2;
+
 }
 
 .intro
@@ -113,7 +114,7 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 	border-color: gray;
    transform: rotate(360deg);
 }
-.content p,.edu li
+.content p,.edu1 li
 {
 	font-family: sans-serif;
 	letter-spacing: 3px;
@@ -145,7 +146,7 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
 }
-.edu li
+.edu1 li
 {
    padding:5px 0px;
    margin: 20px 0px;
@@ -153,21 +154,37 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
    color: white;
 
 }
-.edu li:hover
+.edu1 li:hover
 {
   background-color: coral;
 }
-.edu ul
+.edu1 ul
 {
  list-style-type: square;
  list-style-position: inside;
 
 }
+.fav
+{
+	text-align: left;
+	float: left;
+	width:40%;	
+	font-family: 'Cormorant Infant';
+	font-size:120%;
 
+}
 .edu
 {
 	float: left;
-	width:40%;	
+	width:30%;	
+	font-family: 'Cormorant Infant';
+	font-size:120%;
+}
+.edu1
+{
+	text-align: left;
+	float: left;
+	width:50%;	
 	font-family: 'Cormorant Infant';
 	font-size:120%;
 }
@@ -180,10 +197,11 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 	margin-left: 20px;
 	padding-left:25px;
 }
+
 .heading
 {
 	text-align: center;
-	padding-top:70px;
+	padding-top:250px;
 	text-transform: uppercase;
 	font-size: 60px;
 }
@@ -209,7 +227,7 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 .content a
 {
 
-	text-align: center;
+    text-align: center;
 	
 	text-transform: uppercase;
 	font-size: 50px;
@@ -219,3 +237,57 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 	font-weight: bolder;
 }
 
+.content .twitter
+{
+	margin-left: 0px;
+	padding-left: 0px;
+	text-align:left;
+}
+
+.cric-div
+{
+	float: left;
+	padding: 5px;
+}
+
+#twitter-widget-0
+{
+	border: 1px solid;
+	border-radius: 15px 50px;
+
+}
+.about_heading
+{
+	padding:80px 0px 10px 0px;
+	font-weight: bolder;
+	text-align: left;
+}
+.skill_container
+{
+	padding-top: 30px;
+}
+.h_skills
+{
+	text-align: left;
+	padding-top: 400px;
+}
+
+.skill_bar {
+  width: 100%; /* Full width */
+  background-color: #ddd; /* Grey background */
+   
+  border-radius: 20px;
+}
+
+.skills {
+ text-align: right;
+  padding: 5px; /* Add some padding */
+  border-radius: 20px 20px;
+
+ 
+}
+
+#web {width: 0%; background-color: #4CAF50; transition: width 3s ease 1s;} /* Green */
+#java {width: 0%; background-color: #2196F3;  transition: width 3s ease 1s;} /* Blue */
+#cpp {width: 0%; background-color: #f44336;  transition: width 3s ease 1s;} /* Red */
+#MO {width: 00%; background-color: #808080;  transition: width 3s ease 1s;} /* Dark Grey */
