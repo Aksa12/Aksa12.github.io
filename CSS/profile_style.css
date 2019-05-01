@@ -8,7 +8,6 @@ body
 .navigation
 {
 width: 100%;
-
 background-color: black;
  overflow: hidden;
 position: sticky; /* Set the navbar to fixed position */
@@ -21,9 +20,9 @@ position: sticky; /* Set the navbar to fixed position */
 	display: inline-block;	
 	color: maroon;
 	width:200px;
-	height:60px;
-	padding-top: 30px;
-	font-size: 25px;
+	height:17px;
+	padding: 15px 0px ;
+	font-size: 15px;
 	text-decoration: none;
 	margin: 30px 10px 30px 50px;
 	text-align: center;
@@ -85,7 +84,8 @@ position: sticky; /* Set the navbar to fixed position */
 {
 	width: 400px;
 	height:400px;
-		
+	border-radius:7px;
+border:2px outset grey;
 }
 
 #gmail_logo
