@@ -2,12 +2,18 @@
 body
 {
  width: 100%;
+ scroll-behavior: smooth;
+
 }
 .navigation
 {
 width: 100%;
-height:50%;
+
 background-color: black;
+ overflow: hidden;
+position: sticky; /* Set the navbar to fixed position */
+ top: 0;
+ z-index: 1;
 }
 .block
 {
@@ -36,16 +42,16 @@ background-color: black;
 
 .content
 {
-	background-image: url(https://img.freepik.com/free-photo/brown-concrete-wall-background_43665-111.jpg?size=626&ext=jpg);
-	
+	background-image: url(https://static1.squarespace.com/static/5ae557283917ee2b79e65b8f/5b7c4ec321c67c04a7ead441/5b7c4ed38985835eb3d32766/1534873309114/navy+Background.jpg?format=2500w);
 	background-repeat:no-repeat;
 	background-size: cover;
-	background-color: salmon;
+	background-color:#003349;
 	overflow: hidden;
 	padding:100px;
 	text-align: center;
 	color:Maroon;
 	font-weight: bold;
+	z-index: 0;
 	
 }
 .time h1
@@ -78,8 +84,10 @@ background-color: black;
 .prof
 {
 	width: 400px;
-	height:400px;	
+	height:400px;
+		
 }
+
 #gmail_logo
 {
 	width:50px;
@@ -156,7 +164,7 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 }
 .edu1 li:hover
 {
-  background-color: coral;
+  background-color: lightsteelblue;
 }
 .edu1 ul
 {
@@ -281,13 +289,13 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 
 .skills {
  text-align: right;
-  padding: 5px; /* Add some padding */
+  padding: 4px; /* Add some padding */
   border-radius: 20px 20px;
 
  
 }
 
-#web {width: 0%; background-color: #4CAF50; transition: width 3s ease 1s;} /* Green */
-#java {width: 0%; background-color: #2196F3;  transition: width 3s ease 1s;} /* Blue */
-#cpp {width: 0%; background-color: #f44336;  transition: width 3s ease 1s;} /* Red */
-#MO {width: 00%; background-color: #808080;  transition: width 3s ease 1s;} /* Dark Grey */
+#web {width: 0%; background-color: darkcyan; transition: width 3s ease 1s;} /* Green */
+#java {width: 0%; background-color:steelblue;  transition: width 3s ease 1s;} /* Blue */
+#cpp {width: 0%; background-color: Turquoise;  transition: width 3s ease 1s;} /* Red */
+#MO {width: 00%; background-color: lightcoral;  transition: width 3s ease 1s;} /* Dark Grey */
