@@ -257,8 +257,12 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 	float: left;
 	padding: 5px;
 }
-
-#twitter-widget-0
+.twitter
+{
+	float: left;
+	padding:40px 80px 40px 0px;
+}
+#twitter-widget-0 #twitter-widget-1
 {
 	border: 1px solid;
 	border-radius: 15px 50px;
@@ -291,7 +295,6 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
  text-align: right;
   padding: 4px; /* Add some padding */
   border-radius: 20px 20px;
-
  
 }
 
@@ -299,3 +302,8 @@ transition: border-color 2s ease 1s,border-style 2s ease 1s, transform 2s ease 1
 #java {width: 0%; background-color:steelblue;  transition: width 3s ease 1s;} /* Blue */
 #cpp {width: 0%; background-color: Turquoise;  transition: width 3s ease 1s;} /* Red */
 #MO {width: 00%; background-color: lightcoral;  transition: width 3s ease 1s;} /* Dark Grey */
+
+h3
+{
+	clear:both;
+}
