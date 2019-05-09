@@ -1,78 +1,155 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My profile-Home Page</title>
-	<link rel="stylesheet" type="text/css" href="CSS/profile_style.css">
-	<link href='https://fonts.googleapis.com/css?family=Cinzel Decorative' rel='stylesheet'>
-	<link href='https://fonts.googleapis.com/css?family=Cormorant Infant' rel='stylesheet'>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title>New Releases</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+   <script language="javascript" type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="CSS/nav_bar.css">
 </head>
 <body>
-	<map name="map1">
-		<area  shape="rectangle" coords="0,0,200,200" href="profile_about me.html" alt="about me" title="about me">
-		<area  shape="rectangle" coords="200,0,400,200" href="profile_education.html" alt="education" title="education">
-		<area  shape="rectangle" coords="0,200,200,400" href="profile_interests.html" alt="My Interests" title="my interests">
-		<area  shape="rectangle" coords="200,200,400,400" href="profile_hobbies.html" alt="My Hobbies" title="my hobbies">
-	</map>
-	<div class="navigation">
-		<a href="profile_about me.html" class="block">About me</a> <a href="profile_education.html" class="block">Education</a><a href="profile_hobbies.html" class="block">My Hobbies</a><a href="profile_interests.html" class="block">My Interests</a><a href="profile_fav web.html" class="block">Fav Websites</a>	
-	</div>
-	<div class="content" style="padding-top: 20px;">
-		<div class="time">
-				<h1 id="time"></h1>
-				<h1 id="date"></h1>
-				<h1>Time in Islamabad </h1>
-				</div>
-<script>
-var d = new Date();
-var h=d.getHours();
-var m=d.getMinutes();
-var c= h >= 12 ? 'pm' : 'am';
-	h = h % 12;
-  h = h ? h : 12; 
-  var timeString=h+" : "+m+" "+c;
-  document.getElementById("time").innerHTML=timeString;
-  var day_array=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  var day=day_array[d.getDay()];
-  var month = new Array();
-  month[0]="Jan";
-  month[1]="Feb";
-  month[2]="Mar";
-  month[3]="Apr";
-  month[4]="May";
-  month[5]="Jun";
-  month[6]="Jul";
-  month[7]="Aug";
-  month[8]="Sep";
-  month[9]="Oct";
-  month[10]="Nov";
-  month[11]="Dec";
-  var date=day+" , "+ d.getDate() +" "+month[d.getMonth()]+" "+d.getFullYear()+" (GMT+05)";
-    document.getElementById("date").innerHTML=date;
-</script>
-			<div class="intro">
-			<h1 class="main_name">Aksa Mustafa</h1>
-			<h3><img id="gmail_logo" src="https://cdn.dribbble.com/users/527271/screenshots/3011245/gmail_3.gif" alt="gmail_log">aqsamustafa111@gmail.com</h3>
-			<h3>0308-204-9263</h3>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>			
+			</button>
+			<a class="navbar-brand" href="#"><img src="img/logo.png" class="web_logo" alt="web_logo"></a>
 		</div>
-		<div class="intro profile_image">
-			<img class="prof" src="img/profile_pic.jpg" alt="profile pic"></img>
-			
+		<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li class="active"><a class="nav-link" href="#">Home</a></li>
+				<li class="dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Pages<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+					</ul>
+				</li>
+				<li class="dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">About<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Contact us</a></li>
+						<li><a href="#">About the page</a></li>
+					</ul>
+				</li>
+				<li><a class="nav-link" href="#">Feedback Form</a></li>		
+			</ul>
+			<form class="navbar-form navbar-right" action="/action_page.php">
+     			<div class="input-group">
+        			<input type="text" class="form-control" placeholder="Search" name="search">
+        			<div class="input-group-btn">
+        			  <button class="btn btn-default" type="submit">
+           				 <i class="glyphicon glyphicon-search"></i>
+         			 </button>
+        			</div>
+      			</div>
+    		</form>
 		</div>
-	</div>
-	<script type="text/javascript">
-		$(function()
-		{
+	</div>	
+</nav>
 
-			$(".prof").hover(function()
-			{
-				$(".prof").hide().fadeIn(700).attr("src","img/profile_pic2.jpeg");
-				
-			},function(){
-				$(".prof").hide().fadeIn(700).attr("src","img/profile_pic.jpg");
-			})
-		})
+
+<div class="releases-music-content">
+
+	<div class="rel-heading">
+		<p>See What's New</p>
+		<h2>Latest Albums</h2>
+	</div>	
+</div>
+<div class="container">
+	<div class="songs-list row">
 		
-	</script>
+	</div>
+	<div class="youtube">
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		var sec_len=0;
+		displayList()
+		function displayList()
+		{
+			var i=0;
+
+			$.getJSON('new-releases.json',function(json)
+			{
+				var length=json.newreleases.track.length;
+				console.log(length);
+				$(".songs-list").html(" ");
+
+				for(i=0;i<length;i++)
+				{
+					item=json.newreleases.track[i];
+					$(".songs-list").append('<div class="song col-lg-4"><div class="item-image"><img src="'+item.image+'"></div><div class="item-name">'+item.name+'</div><div class="item-artist">'+item.artist+'</div><div class="item-genre">'+item.genre+'</div><div class="hidden">'+i+'</div></div>')
+
+					
+
+				}// end of for loop
+				$(".hidden").hide();
+					$(".songs-list").css(
+					{
+						"padding-top":"100px",
+					})
+
+				$(".song").css(
+				{
+					"padding":"7px",
+					
+					"text-align":"justify",
+					"text-transform": "capitalize",
+					"letter-spacing":"3px",
+					"line-height": "1.6",
+					//"justify-content":"center",
+				})// end of songs css
+				$(".item-image").css(
+				{
+					"padding":"20px 0px",
+				})
+
+				$('.song').addClass('wow fadeInRight');	
+
+				$(".song").on("click",function()
+				{
+						$(".youtube").html("");
+					/*	$(".youtube").append('<iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"</iframe>');*/
+						for(i=0;i<length;i++)
+						{
+							item=json.newreleases.track[i];
+							if($(this).find(".hidden").html()==i)
+							{
+								$(".youtube").append('<iframe width="420" height="345" src="'+item.url+'"</iframe>');
+							//	$(".youtube").append('<iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>');
+							}
+						}
+				})
+				$(".youtube").css(
+				{
+					"position":"absolute",
+					"bottom":"0",
+					"right":"0",
+					"z-index":"300",
+				})
+
+			}) // end of json method
+
+		} // end of display function
+
+	})// end of ready function
+</script>
+<script>
+
+new WOW().init();
+
+</script>
 </body>
 </html>
