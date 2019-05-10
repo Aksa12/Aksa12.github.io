@@ -10,9 +10,14 @@ a:hover
 text-decoration: none;
 color: deeppink !important;
 }
+.web_logo
+{
+	height: 20px;
+}
 .navbar
 {
 	padding: 15px;
+	
 }
 .navbar-nav li
 {
@@ -21,6 +26,24 @@ color: deeppink !important;
 .nav-link
 {
 	font-size:1.1em !important;
+	color:white !important;
+}
+.dropdown-menu
+{
+	background-color:#222;
+}
+.dropdown-menu li
+{
+	padding: 5px;
+}
+.dropdown-menu a
+{
+color:white !important;	
+}
+.dropdown-menu a:hover
+{
+color:deeppink !important;
+background-color:#222 !important;	
 }
 .carousel-inner .item img
 {
@@ -41,10 +64,10 @@ color: deeppink !important;
 	text-transform: uppercase;
 	text-shadow: 3px 3px 5px black;
 }
-.billboard{background-image: url("../img/bg4.jpg");}
-.new-releases{background-image: url("../img/bg5.jpg");}
-.genres{background-image: url("../img/bg6.jpg");}
-.top-albums{background-image: url("../img/bg7.jpg");}
+.billboard{background-image: url("../img/bg9.jpg");}
+.new-releases{background-image: url("../img/bg15.jpg");}
+.genres{background-image: url("../img/bg14.jpg");}
+.top-albums{background-image: url("../img/bg3.jpg");}
 .playlist-section
 {
 	width: 100%;
@@ -58,39 +81,40 @@ color: deeppink !important;
 .playlist-section a
 {
 	position: relative;
-float: left;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
+	float: left;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	font-size: 3.2em;
 	line-height: 1.5;
 	text-transform: uppercase;
 	text-shadow: 3px 3px 5px black;
 	color: white;
 }
- .trending-music-content h1, .artist-music-content h1
+ .trending-music-content h1, .artist-music-content h1,.search-header h1
 {
-text-align: center;
-font-size: 3.2em;
+	text-align: center;
+	font-size: 3.2em;
 	line-height: 1.5;
 	text-transform: uppercase;
 	text-shadow: 3px 3px 5px black;
 	color: white;
 }
-.releases-music-content h2,.releases-music-content p
+.releases-music-content h2,.releases-music-content p, .albums-music-content h2, .albums-music-content p
 {
 
-text-align: center;
+	text-align: center;
 	line-height: 1.5;
 	text-transform: uppercase;
 	text-shadow: 3px 3px 5px pink;
 	color: #dc2878;
 
 }
-.trending-music-content, .artist-music-content,.releases-music-content
+.trending-music-content, .artist-music-content,.releases-music-content,.albums-music-content,.search-header
 {
 	width: 100%;
 	overflow: hidden;
+	overflow-y: auto;
 	padding: 120px;
 }
 .trending-music-content
@@ -114,7 +138,16 @@ text-align: center;
 	background-size: cover;
 	height: 100%;	
 }
-.rel-heading
+.albums-music-content
+{
+	background-image: url("../img/bg11.jpg");
+	background-repeat:no-repeat;	
+	background-size: cover;
+	height: 100%;	
+}
+/*New Releases and top albums*/
+/*Styling of the releases heading and top albums heading*/
+.rel-heading, .alb-heading
 {
 	background-color: #fff;
 	width: 552px;
@@ -125,19 +158,17 @@ text-align: center;
 	transform: translateX(-50%);	
 	z-index: 100;
 }
-
-.songs-list
+.songs-list,.albums-list
 {
-	color: white;
+   color: white;
    padding:50px;
    letter-spacing: 0.8px;
+}
 
-}
-.btn
-{
-	
-}
-#artist_name
+
+
+/*Styling of the songs_by_artist*/
+#artist_name  /*Input field of artist*/
 {
 
 width: 700px;
@@ -149,23 +180,25 @@ border-radius: 6px;
 border-color:white;
 
 }
-.sa_btn
+.sa_btn /* button of show songs and albums*/
 {
 	padding:10px;
 	margin:50px 20px;
 	width:220px;
 	position:relative;
 	left:23%;
-	 color:#dc2878;
+	color:#dc2878;
 	background-color:white;
- border-color:white;
+	border-color:white;
 }
-.sa_btn:hover
+.sa_btn:hover /*Hovering over the songs and button*/
 {
 	 color:white;
 	background-color:#dc2878;
  	border-color:#dc2878;
 }
+
+
 .wow {
   visibility: hidden;
 }
@@ -173,10 +206,218 @@ a
 {
 	color:white;
 }
-.songs-list img
+
+/* Styling for search*/
+/* search header styling*/
+.search-header
 {
-	width: 220px;
-	height: 220px;
-	
+	background-image: url("../img/bg14.jpg");
+	background-repeat:no-repeat;	
+	background-size: cover;
+	height: 100%;	
+}
+.search-header-content
+{
+	position: relative;
+	top: 35%;
+}
+.search-bar
+{
+	position: relative;
+	left:13%;
+	padding: 20px;
+}
+.search-grp
+{
+	padding-left:0px;
+	padding-right:0px;
+}
+.search-btn{
+    display: block;
+    width: 100%;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: 50px !important;
+    border-radius:0;
+    padding-left: 5px;
 
 }
+.search-sub-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: 50px !important;
+    border-radius:0;   
+   color:white;
+	background-color:#dc2878;
+ 	border-color:#dc2878;
+}
+/*Search Result styling*/
+.search-result-content ul
+{
+	list-style-type: none;
+	padding-left: 0px;
+	font-size:17px;
+}
+.search-result-content li
+{
+	padding: 10px;
+}
+.search-result-content a
+{
+	font-style: italic;
+	color:deeppink;
+}
+
+
+/*Footer styling*/
+
+.footer-distributed{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 55px 50px;
+	margin-top: 10px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+.footer-distributed .footer-left img
+{
+	
+	width:200px;
+	margin-top: 70px;
+	height: 20px;
+	z-index: 400;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+	color:#dc2878;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+	font-weight: 400;
+	letter-spacing: 2px;
+
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+.footer-distributed .footer-center .email p{
+	color:  #dc2878;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #dc2878;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+.footer-distributed .footer-icons a:hover
+{
+	color:#dc2878;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
+}
+
