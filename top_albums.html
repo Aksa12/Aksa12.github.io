@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Top Albums</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+   	<script language="javascript" type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="CSS/nav_bar.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>			
+			</button>
+			<a class="navbar-brand" href="#"><img src="img/logo.png" class="web_logo" alt="web_logo"></a>
+		</div>
+		<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a class="nav-link" href="index.html">Home</a></li>
+				<li class="active dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Pages<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a target="_blank" href="top_charts.html">Charts-Hot 50</a></li>
+						<li><a target="_blank" href="new_releases.html">New Releases</a></li>
+						<li><a target="_blank" href="songs_by_artists.html">Songs and Albums By Artists</a></li>
+						<li><a href="top_albums.html">Top Albums</a></li>
+					</ul>
+				</li>
+				<li><a class="nav-link" href="index.html#footer">About me</a></li>
+				<li><a class="nav-link" href="#">Feedback Form</a></li>	
+				<li><a class="nav-link" href="search_song.html"><i class="glyphicon glyphicon-search"></i></a></li>	
+			</ul>     			
+    		
+		</div>
+	</div>	
+</nav>
+
+<!--Main Content-->
+<div class="albums-music-content"> <!--header-->
+	<div class="alb-heading">
+		<p>See What's Trending</p>
+		<h2>Top Albums</h2>
+	</div>	
+</div>
+<div class="albums-main-content"> <!--top albums comes here-->
+<div class="container">
+	<div class="albums-list row">
+		<!--dynamically adds top albums here through javascript,jquery and json-->
+	</div>
+	<div class="description"> <!--div for the description of the song-->
+	</div>
+</div>
+</div>
+<!--Javascript and json code-->
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		displayList();
+		function displayList() // all  the json code here
+		{
+			$.getJSON('top-albums.json',function(json)
+			{
+				var length=json.topalbums.album.length; // get the length of the json file
+				console.log(length);
+				$(".albums-list").html(" "); // clearing the previous content
+
+				for(i=0;i<length;i++)
+				{
+					item=json.topalbums.album[i];
+					// appending the albums to the albums-list div
+					$(".albums-list").append('<div class="album col-lg-5"><div class="item-image"><img src="'+item.image+'"></div><div class="item-name">'+item.name+'</div><div class="item-artist">'+item.artist+'</div><div class="item-genre">'+item.genre+'</div><div class="hidden">'+i+'</div></div>');
+				}// end of for loop
+				$(".hidden").hide();
+
+				$(".album").on("click",function() // add the album description
+				{
+						$(".description").html("");//clearing the previous content
+						$(".description").show(); //show the div area
+						for(i=0;i<length;i++) // this loop displays the corresponding description of the albums
+						{
+							item=json.topalbums.album[i];
+							if($(this).find(".hidden").html()==i)
+							{
+								// appending the description
+							$(".description").append('<div><span style="color:#dc2878;font-weight:bolder">Description: </span>'+item.description+'"</div>');
+							}
+						}
+				})
+				$(".album").on("dblclick",function() // remove the description section
+				{
+					$(".description").hide();		
+				})
+				$(".description").hide();
+
+
+
+				//Styling
+				$(".albums-list").css(
+				{
+					"padding-top":"100px",
+				})
+				$(".album").css( //styling of the albums
+				{
+					"padding":"7px",	
+					"text-align":"justify",
+					"text-transform": "capitalize",
+					"letter-spacing":"3px",
+					"line-height": "1.6",
+					//"justify-content":"center",
+				})// end of songs css
+				$(".item-image").css( 
+				{
+					"padding":"20px 0px",
+				})
+
+				$(".album").hover(function()//hovering over the albums changes the color
+				{
+              		$(this).css("color","#dc2878");
+				},function()
+				{
+					$(this).css("color","white");
+				})
+
+
+				$(".description").css( // styling of the description of the album section
+				{
+					"padding":"10px",
+					"position":"fixed",
+					"bottom":"0",
+					"right":"0",
+					"z-index":"300",
+					"width":"450px",
+					"height":"200",
+					"text-align":"justify",
+					"letter-spacing":"3px",
+					"line-height": "1.6",
+					"font-weight":"bold",
+					"font-size":"1.2em",
+					"overflow-y":"auto",
+					"background-color":"white",
+
+
+				})
+				$(".albums-list img").css( //styling of the image of the album
+				{
+					"width":"250px",
+					"height":"250px",
+				})	
+				$('.album').addClass('wow fadeInRight');	// animation on album		
+
+			}) // end of json method
+
+		} // end of display function
+
+	})// end of ready function
+</script>
+<script>
+
+new WOW().init();
+
+</script>
+</body>
+</html>

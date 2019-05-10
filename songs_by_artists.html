@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Top Tracks by Artist</title>
+	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+   	<script language="javascript" type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="CSS/nav_bar.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>			
+			</button>
+			<a class="navbar-brand" href="#"><img src="img/logo.png" class="web_logo" alt="web_logo"></a>
+		</div>
+		<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a class="nav-link" href="index.html">Home</a></li>
+				<li class="active dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Pages<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a target="_blank" href="top_charts.html">Charts-Hot 50</a></li>
+						<li><a target="_blank" href="new_releases.html">New Releases</a></li>
+						<li><a href="songs_by_artists.html">Songs and Albums By Artists</a></li>
+						<li><a target="_blank" href="top_albums.html">Top Albums</a></li>
+					</ul>
+				</li>
+				<li><a class="nav-link" href="index.html#footer">About me</a></li>
+				<li><a class="nav-link" href="#">Feedback Form</a></li>	
+				<li><a class="nav-link" href="search_song.html"><i class="glyphicon glyphicon-search"></i></a></li>	
+			</ul>     			
+    		
+		</div>
+	</div>	
+</nav>
+
+<!-- Main Content-->
+<div class="artist-music-content">
+	<h1>Top Tracks By Your Favourite Artist</h1>
+	<input type="text" name="artist_name" id="artist_name" placeholder="Enter Artist name here"><br> <!--Artist name-->
+	<button type="button" class="sa_btn songs_btn btn btn-outline-light btn-lg">Top Songs</button>	<!--Button for songs-->
+	<button type="button" class="sa_btn albums_btn btn btn-outline-light btn-lg">Top Albums</button> <!--Button for albums-->
+	<div class="songs-list">
+		<!--Songs list dynamically by javascript and jquery-->
+	</div>
+</div>
+
+<!--Javascript and Jquery-->
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		var it_no=0; // variable for rank of the songs or albums
+		$("h1").addClass('wow fadeInRight'); // animation to h1 contents
+		$("h1").attr("data-wow-delay","2.5s"); // delay on animation
+
+		// when the song button is clicked
+		$(".songs_btn").on("click",function()
+		{
+			var artist=document.getElementById("artist_name").value; // get the artist name
+			console.log(artist);
+			$(".songs-list").html(" "); // clear the previous content
+			$.getJSON('http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist='+artist+'&api_key=e292f7273e2ec29065bf3e11f2836d29&format=json',function(json)
+			{
+				console.log(json.error);
+				if(json.error==undefined) // correct name entered/no error
+				{
+					console.log(json);
+					var length=20;
+				
+				$(".songs-list").prepend('<h1>Top Albums By <a target="_blank" href="'+json.toptracks.track[0].artist.url+'">'+json.toptracks.track[0].artist.name+'</a></h1>');
+	 			for (i=0;i<(length);i++)
+	 			{
+	 				it_no=i+1; // rank of the songs
+	 				item=json.toptracks.track[i];
+	 				// appending the songs to the songs-list div
+	 				$(".songs-list").append('<div class="row" style="height:160px"><div class="item-no col-xs-2 col-sm-1 col-md-1 col-lg-2">'+it_no+'.</div><div class="item-name col-xs-6 col-sm-8 col-md-8 col-lg-8">'+item.name+'<ul class="details"><li>Playcounts : '+item.playcount+'</li></ul></div><div class="play-song col-xs-2 col-sm-1 col-md-1 col-lg-2"><a target="_blank" href="'+item.url+'"><span class="glyphicon glyphicon-play"></span></a></div></div>')
+	 				console.log(item.playcount);
+	 				console.log(item.name);
+	 			} // end of for loop
+
+
+	 			// CSS styling
+	 			$(".details").hide(); // hiding the song details
+	 			$(".item-name").hover(function() // show the details of the songs on hovering over the song name
+	 			{
+	 				
+	 				$(this).find(".details").show();
+	 				$(this).find(".details").addClass('animated slideInRight'); 				
+
+	 			},function()
+	 			{
+	 				$(this).find(".details").removeClass('animated slideInRight');
+	 				$(this).find(".details").fadeOut(1000);
+	 			})
+	 			
+	 			$(".row").hover(function() // change the color when hover over any row/songs-list
+					{
+	               		$(this).css("background-color","#1e1e1e");
+	               		$(this).css("color","#dc2878");
+					},function()
+					{
+						$(this).css("background-color","#0c0c0c");
+						$(this).css("color","white");
+					})
+
+
+	 			$(".row").css(
+	 			{
+	 				
+	 				"padding":"40px 30px 20px 30px",
+	 				"background-color":"#0c0c0c",
+		 			"border-bottom":"1px solid #343535",
+		 			"border-radius":"3px",
+		 			"display":"border-box",
+		 			"font-size":"25px",
+		 			"font-weight":"400",
+		 			"line-height": "1.5",
+		    		"text-align": "left",
+		    		"text-transform": "capitalize",
+		    		"transition":"height 1s ease 0.3s",
+
+	 			})
+
+	 			$(".details").css( // styling of songs details
+	 			{
+	 				"list-style":"none",
+	 				"font-size":"17px",
+	 				"padding-left":"0px",
+	 			})
+	 			$(".details li").css(
+	 			{
+	 				"padding":"5px"
+	 			})	
+				$('.row').addClass('wow fadeInRight');	
+				} // end of if statement if the correct name is not entered
+				else
+					{
+						$(".songs-list").append('<h2 style="color:deeppink;text-align:center;">Pls make sure to type in the correct artist name</h2>');
+					}
+				}) // end of json
+			
+			}) // end of onclick for songs
+
+
+// Top Albums
+
+
+	$(".albums_btn").on("click",function()
+			{
+				var artist=document.getElementById("artist_name").value; // get the artist name
+				console.log(artist);
+				$(".songs-list").html(" "); //clearing the previous content
+				$.getJSON('http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist='+artist+'&api_key=e292f7273e2ec29065bf3e11f2836d29&format=json',function(json)
+				{
+					if(json.error==undefined) // if correct name is enteres
+					{
+						console.log(json);
+						var length=20; // 20 albums are displayed			
+						$(".songs-list").prepend('<h1>Top Albums By <a target="_blank" href="'+json.topalbums.album[0].artist.url+'">'+json.topalbums.album[0].artist.name+'</a></h1>');
+			 			for (i=0;i<(length);i++)
+			 			{
+			 				it_no=i+1; // rank of the song
+			 				item=json.topalbums.album[i];
+			 				// appending the albums here
+			 				$(".songs-list").append('<div class="row" style="height:160px"><div class="item-no col-xs-2 col-sm-1 col-md-1 col-lg-2">'+it_no+'.</div><div class="item-name col-xs-6 col-sm-8 col-md-8 col-lg-8">'+item.name+'<ul class="details"><li>Playcounts : '+item.playcount+'</li></ul></div><div class="play-song col-xs-2 col-sm-1 col-md-1 col-lg-2"><a target="_blank" href="'+item.url+'"><span class="glyphicon glyphicon-play"></span></a></div></div>')
+			 				
+			 			} //end of for loop
+
+	 				$(".details").hide(); // hiding the details of the albums
+		 			$(".item-name").hover(function() //hovering over the albums name, displays the details
+		 			{
+		 				$(this).find(".details").show();
+		 				$(this).find(".details").addClass('animated slideInRight');	 				
+
+		 			},function()
+		 			{
+		 				$(this).find(".details").removeClass('animated slideInRight');
+		 				$(this).find(".details").fadeOut(1000);
+		 			})
+
+		 			$(".row").hover(function() //hover over the song list/row div changes the background color
+					{
+		               $(this).css("background-color","#1e1e1e");
+					},function()
+					{
+							$(this).css("background-color","#0c0c0c");
+					})
+
+
+		 			$(".row").css( //styling of the albums list
+		 			{
+		 				
+		 				"padding":"40px 30px 20px 30px",
+		 				"background-color":"#0c0c0c",
+		 			   "border-bottom":"1px solid #343535",
+		 			   "border-radius":"3px",
+		 			   "display":"border-box",
+		 			   "font-size":"25px",
+		 			   "font-weight":"400",
+		 			   "line-height": "1.5",
+		    			"text-align": "left",
+		    			"text-transform": "capitalize",
+		    			"transition":"height 1s ease 0.3s",
+
+		 			})	
+
+
+		 			$(".details").css( // styling of the albums details
+		 			{
+		 				"list-style":"none",
+		 				"font-size":"17px",
+		 				"padding-left":"0px",
+		 			})
+		 			$(".details li").css(
+		 			{
+		 				"padding":"5px"
+		 			})
+					$('.row').addClass('wow fadeInRight'); // animation on albums list
+					}// end of if statement if the correct name is entered
+					else // if correct name is not entered
+					{
+						$(".songs-list").append('<h2 style="color:deeppink;text-align:center;">Pls make sure to type in the correct artist name</h2>');
+					}
+				}) // end of json
+
+		}) // end of albums onclick
+	}) // end of ready method
+</script>
+<script>
+
+new WOW().init();
+
+</script>
+</body>
+</html>

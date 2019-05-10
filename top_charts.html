@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Top Trending Songs</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+    <script language="javascript" type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="CSS/nav_bar.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>			
+			</button>
+			<a class="navbar-brand" href="#"><img src="img/logo.png" class="web_logo" alt="web_logo"></a>
+		</div>
+		<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a class="nav-link" href="index.html">Home</a></li>
+				<li class="active dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Pages<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="top_charts.html">Charts-Hot 50</a></li>
+						<li><a target="_blank" href="new_releases.html">New Releases</a></li>
+						<li><a target="_blank" href="songs_by_artists.html">Songs and Albums By Artists</a></li>
+						<li><a target="_blank" href="top_albums.html">Top Albums</a></li>
+					</ul>
+				</li>
+				<li><a class="nav-link" href="index.html#footer">About me</a></li>
+				<li><a class="nav-link" href="#">Feedback Form</a></li>	
+				<li><a class="nav-link" href="search_song.html"><i class="glyphicon glyphicon-search"></i></a></li>	
+			</ul>     			
+    		
+		</div>
+	</div>	
+</nav>
+
+<!-- Trending music main content-->
+<div class="trending-music-content">
+	<h1>Top Trending Music</h1>
+	
+	<div class="songs-list"> <!-- Songs list comes here -->
+	
+	<!-- Dynamically display list of songs here-->
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+		
+	$(document).ready(function()
+	{
+
+		var it_no=0;
+		var sec_len=0;
+		display_list(); 
+		
+		function display_list() // all the json is done here
+ 		{
+ 		$.getJSON('http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=e292f7273e2ec29065bf3e11f2836d29&format=json',function(json)
+ 		{
+ 			var length=json.tracks.track.length; // length of the json file
+ 			console.log(length);
+ 			$(".songs-list").html(" "); // clears the previous content
+ 		    var m=1; // variable for image
+ 			for (i=sec_len;i<(sec_len+10);i++)
+ 			{
+ 				it_no=i+1; // rank of the songs
+ 				item=json.tracks.track[i];
+ 				// appending the song here
+ 				$(".songs-list").append('<div class="row" style="height:160px"><div class="item-no col-xs-2 col-sm-1 col-md-1 col-lg-1">'+it_no+'.</div><div class="item-image col-xs-4 col-sm-2 col-md-2 col-lg-2"><img src="img/songicon'+m+'.jpg"></div><div class="item-name col-xs-6 col-sm-8 col-md-8 col-lg-8">'+item.name+'<ul class="details"><li>Artist Name : '+item.artist.name+'</li><li>Playcount : '+item.playcount+'</li><li>Listeners : '+item.listeners+'</li><li><a target="_blank" href="'+item.url+'"><span class="glyphicon glyphicon-play"></span>play the song</a></li></ul></div><div class="item-drop-icon col-xs-2 col-sm-1 col-md-1 col-lg-1"><div class="drop"><span class="caret"></span></div></div></div>');
+ 				m++;
+ 			} // end of for loop
+
+			$(".songs-list").append('<button type="button" class="gb_btn vm_gb btn btn-outline-light btn-lg">Go Back</button>');// appending the go back button
+ 			$(".songs-list").append('<button type="button" class="vm_btn vm_gb btn btn-primary btn-lg">View More</button>'); // appending the view button
+
+
+
+ 			$(".glyphicon-play").css(
+ 			{
+ 				"padding":"5px 5px 5px 0px",
+ 			})
+ 			
+ 			// Styling here
+
+			$(".vm_gb").css(    // view more and go back button styling
+			{
+				"padding":"10px",
+				"margin":"50px 20px",
+				"width":"220px",
+				"position":"relative",
+				"left":"23%",
+				 "color":"#dc2878",
+				 "background-color":"white",
+				 "border-color":"white",
+			})
+
+			$(".vm_gb").hover(function()  // hover over the the view more and go back button
+				{
+	               $(this).css(
+	               	{
+	               		"background-color":"#dc2878",
+	               		"color":"white",
+	               		"border-color":"#dc2878",
+	               	});
+				},function()
+				{
+					$(this).css(
+						{
+							"color":"#dc2878",
+							"background-color":"white",
+							"border-color":"white",
+						});
+				})
+
+				$(".details").hide();		 // hiding the ul details
+				$(".item-drop-icon").on("click",function() // show the corresponding details on click
+				{
+					$(this).siblings(".item-name").find(".details").slideToggle(1700);
+					
+					if(($(this).parent().css("height"))=="160px")
+						{
+							$(this).parent().css("height","220px");
+						}
+						else
+						{
+							$(this).parent().css("height","160px");
+						}	
+				})
+
+				$(".row").hover(function() // hover over any list 
+				{
+              		$(this).css("background-color","#1e1e1e"); // color to grey
+				},function()
+				{
+					$(this).css("background-color","#0c0c0c"); // color back to previous color
+				})
+
+				$(".caret").hover(function() // hover over the drop down for details
+				{
+               		$(this).css("color","deeppink");
+				},function()
+				{
+					$(this).css("color","white");
+				})
+
+				$(".vm_btn").on("click",function() // view more songs on click
+				 			{
+				 				sec_len +=10;
+ 								if(sec_len==length)
+ 									{
+ 										sec_len=0;
+ 									}
+				 					display_list();
+				 			})
+
+				$(".gb_btn").on("click",function() // view more songs on click
+				 			{
+				 				
+ 								if(sec_len==0)
+ 									{
+ 										sec_len=40;
+ 									}
+ 									else
+ 									{
+ 										sec_len -=10;
+ 									}
+ 										
+				 						display_list();
+				 			})
+ 	
+ 				
+ 			
+ 			// Styling of the songs list
+ 			$(".row").css(
+ 			{
+ 				"padding":"40px 30px 20px 30px",	
+ 				"background-color":"#0c0c0c",
+ 			   "border-bottom":"1px solid #343535",
+ 			   "border-radius":"3px",
+ 			   "display":"border-box",
+ 			   "font-size":"25px",
+ 			   "font-weight":"400",
+ 			   "line-height": "1.5",
+    			"text-align": "left",
+    			"text-transform": "capitalize",
+    			"transition":"height 1s linear 0.3s",
+
+ 			})
+
+ 			// styling of the details of the songs
+ 			$(".details").css(
+ 			{
+ 				"list-style":"none",
+ 				"font-size":"17px",
+ 				"padding-left":"0px",
+ 			})
+ 			$(".details li").css(
+ 			{
+ 				"padding":"5px"
+ 			})
+ 			//styling of the drop down button for details
+ 			$(".caret").css(
+ 			{
+ 				"border-top": "10px dashed",
+ 				"border-right": "10px solid transparent",
+ 				"border-left": "10px solid transparent",
+ 			})
+ 			
+ 			$('.row').addClass('wow fadeInRight');	// transition
+ 				
+		
+ 		}) // end of json
+ 		} // end of display method
+ 	}) // end of ready method
+ 			
+ 			/*
+ 			$.each(json.tracks.track,function(i,item)
+ 				{
+
+ 					$(".songs-list").append('<div class="row"><div class="item-no col-xs-2 col-sm-1 col-md-1 col-lg-1">'+i+'</div><div class="item-image col-xs-4 col-sm-2 col-md-2 col-lg-2"></div><div class="item-name col-xs-6 col-sm-8 col-md-8 col-lg-8">'+item.name+'</div><div class="item-drop-icon col-xs-2 col-sm-1 col-md-1 col-lg-1"></div>')
+ 				})
+ 			*/
+ 								
+	
+
+
+
+</script>
+<script>
+
+new WOW().init();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Releases</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+   	<script language="javascript" type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="CSS/nav_bar.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>			
+			</button>
+			<a class="navbar-brand" href="#"><img src="img/logo.png" class="web_logo" alt="web_logo"></a>
+		</div>
+		<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a class="nav-link" href="index.html">Home</a></li>
+				<li class="active dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Pages<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a target="_blank" href="top_charts.html">Charts-Hot 50</a></li>
+						<li><a href="new_releases.html">New Releases</a></li>
+						<li><a target="_blank" href="songs_by_artists.html">Songs and Albums By Artists</a></li>
+						<li><a target="_blank" href="top_albums.html">Top Albums</a></li>
+					</ul>
+				</li>
+				<li><a class="nav-link" href="index.html#footer">About me</a></li>
+				<li><a class="nav-link" href="#">Feedback Form</a></li>	
+				<li><a class="nav-link" href="search_song.html"><i class="glyphicon glyphicon-search"></i></a></li>	
+			</ul>     			
+    		
+		</div>
+	</div>	
+</nav>
+
+
+<!--Main Content-->
+<div class="releases-music-content"> <!--Header-->
+	<div class="rel-heading">
+		<p>See What's New</p>
+		<h2>Latest Songs</h2>
+	</div>	
+</div>
+
+<!--Content-->
+<div class="releases-main-content">
+<div class="container">
+	<div class="songs-list row">
+		<!--Dynamically add songs here-->
+	</div>
+	<div class="youtube"><!--Youtube player-->
+	</div>
+</div>
+</div>
+
+<!--Javascript and jquery code here-->
+<script type="text/javascript">
+	$(document).ready(function() 
+	{
+		displayList();
+		function displayList() // all the json is done here
+		{
+			$.getJSON('new-releases.json',function(json)
+			{
+				var length=json.newreleases.track.length; // get the length of json file
+				console.log(length);
+				$(".songs-list").html(" ");// clearing the previous content
+
+				for(i=0;i<length;i++)
+				{
+					item=json.newreleases.track[i];
+					// appending the new releases song list here
+					$(".songs-list").append('<div class="song col-lg-5"><div class="item-image"><img src="'+item.image+'"></div><div class="item-name">'+item.name+'</div><div class="item-artist">'+item.artist+'</div><div class="item-genre">'+item.genre+'</div><div class="hidden">'+i+'</div></div>')
+
+				}// end of for loop
+				$(".hidden").hide();
+
+				$(".song").on("click",function() // add the youtube video
+				{
+						$(".youtube").html("");// clearing the previous youtube video content
+						for(i=0;i<length;i++) // this loop plays the video of the correspond content clicked
+						{
+							item=json.newreleases.track[i];
+							if($(this).find(".hidden").html()==i)
+							{
+								$(".youtube").append('<iframe width="500" height="300" src="'+item.url+'"</iframe>'); //append the youtube video
+							}
+						}
+				})// end of youtube click
+
+				$(".song").on("dblclick",function() // remove the youtube video on double clicking the song
+				{
+					$(".youtube").html("");
+				})
+
+
+				// Styling
+
+				$(".songs-list").css(
+					{
+						"padding-top":"100px",
+					})
+
+				$(".song").css( // styling of each song
+				{
+					"padding":"7px",			
+					"text-align":"justify",
+					"text-transform": "capitalize",
+					"letter-spacing":"3px",
+					"line-height": "1.6",
+					//"justify-content":"center",
+				})// end of songs css
+
+				$(".item-image").css( // styling of the item image here
+				{
+					"padding":"20px 0px",
+				})
+
+
+				$(".song").hover(function() // hovering over the song change the color
+					{
+	              	 	$(this).css("color","#dc2878");
+					},function()
+					{
+						$(this).css("color","white");
+					})
+
+				$(".youtube").css( // styling of the youtube video
+				{
+					"position":"fixed",
+					"bottom":"0",
+					"right":"0",
+					"z-index":"300",
+					"width":"500px",
+				})
+				$(".songs-list img").css( //styling of song image
+				{
+					"width":"250px",
+					"height":"250px",
+				})
+				$('.song').addClass('wow fadeInRight'); // animation in song
+			}) // end of json method
+
+		} // end of display function
+
+	})// end of ready function
+</script>
+<script>
+
+new WOW().init();
+
+</script>
+</body>
+</html>

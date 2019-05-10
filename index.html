@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>New Releases</title>
+	<title>Navigation Bar with Bootstrap</title>
 	<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
-   <script language="javascript" type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
- 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="CSS/nav_bar.css">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="CSS/nav_bar.css">
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -28,128 +24,122 @@
 		</div>
 		<div class="collapse navbar-collapse navbar-right" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a class="nav-link" href="#">Home</a></li>
+				<li class="active"><a class="nav-link" href="index.html">Home</a></li>
 				<li class="dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Pages<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#"></a></li>
-						<li><a href="#"></a></li>
+						<li><a target="_blank" href="top_charts.html">Charts-Hot 50</a></li>
+						<li><a target="_blank" href="new_releases.html">New Releases</a></li>
+						<li><a target="_blank" href="songs_by_artists.html">Songs and Albums By Artists</a></li>
+						<li><a target="_blank" href="top_albums.html">Top Albums</a></li>
 					</ul>
 				</li>
-				<li class="dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">About<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Contact us</a></li>
-						<li><a href="#">About the page</a></li>
-					</ul>
-				</li>
-				<li><a class="nav-link" href="#">Feedback Form</a></li>		
-			</ul>
-			<form class="navbar-form navbar-right" action="/action_page.php">
-     			<div class="input-group">
-        			<input type="text" class="form-control" placeholder="Search" name="search">
-        			<div class="input-group-btn">
-        			  <button class="btn btn-default" type="submit">
-           				 <i class="glyphicon glyphicon-search"></i>
-         			 </button>
-        			</div>
-      			</div>
-    		</form>
+				<li><a class="nav-link" href="#footer">About me</a></li>
+				<li><a class="nav-link" href="#">Feedback Form</a></li>	
+				<li><a class="nav-link" href="search_song.html"><i class="glyphicon glyphicon-search"></i></a></li>	
+			</ul>     			
+    		
 		</div>
 	</div>	
 </nav>
 
-
-<div class="releases-music-content">
-
-	<div class="rel-heading">
-		<p>See What's New</p>
-		<h2>Latest Albums</h2>
-	</div>	
-</div>
-<div class="container">
-	<div class="songs-list row">
-		
+<div id="slides" class="carousel slide" data-ride="carousel">
+	<ul class="carousel-indicators">
+		<li data-target="#slides" data-slide-to="0" class="active"></li>
+		<li data-target="#slides" data-slide-to="1"></li>
+		<li data-target="#slides" data-slide-to="2"></li>		
+	</ul>
+	<div class="carousel-inner">
+		<div class="item active"><img src="img/bg1.jpg">
+			<div class="carousel-caption">
+				<h1>Latest Trending Songs</h1>
+			</div>
+		</div>
+		<div class="item"><img src="img/bg2.jpg" alt="bg2">
+			<div class="carousel-caption">
+				<h1>Top Tracks and Albums</h1>
+			</div>
+		</div>
+		<div class="item"><img src="img/bg13.jpg" alt="bg3">
+			<div class="carousel-caption">
+				<h1>Songs and Albums of your Favourite Artists</h1>
+			</div>
+		</div>	
 	</div>
-	<div class="youtube">
+	
+	<!-- Left and right controls -->
+  <a class="left carousel-control" href="#slides" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#slides" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+ 
+
+<div class="row">
+	<div class="col-xs-12 billboard playlist-section">
+		<a target="_blank" href="top_charts.html">Charts-Hot 50</a>
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function()
-	{
-		var sec_len=0;
-		displayList()
-		function displayList()
-		{
-			var i=0;
+<div class="row">
+	<div class="col-xs-12 new-releases playlist-section">
+		<a target="_blank" href="new_releases.html">New Releases</a>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 genres playlist-section">
+		<a target="_blank" href="songs_by_artists.html">Songs and Albums of your favourite artist</a>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 top-albums playlist-section">
+		<a target="_blank" href="top_albums.html">Top Albums</a>
+	</div>
+</div>
 
-			$.getJSON('new-releases.json',function(json)
-			{
-				var length=json.newreleases.track.length;
-				console.log(length);
-				$(".songs-list").html(" ");
+<!-- Footerr about-->
 
-				for(i=0;i<length;i++)
-				{
-					item=json.newreleases.track[i];
-					$(".songs-list").append('<div class="song col-lg-4"><div class="item-image"><img src="'+item.image+'"></div><div class="item-name">'+item.name+'</div><div class="item-artist">'+item.artist+'</div><div class="item-genre">'+item.genre+'</div><div class="hidden">'+i+'</div></div>')
+<footer id="footer" class="footer-distributed">
+			<div class="footer-left">
+				<a href="searchh.html"><img src="img/logo.png" class="web_logo" alt="web_logo"></a>
+			</div>
+			<div class="footer-center">
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>Hashimabad Society, Makli</span>Sindh, Pakistan</p>
+				</div>
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+9 230 82049263</p>
+				</div>
+				<div class="email">
+					<i class="fa fa-envelope"></i>
+					<p >aqsamustafa111@gmail.com</p>
+				</div>
+			</div>
+			<div class="footer-right">
+				<p class="footer-company-about">
+					<span>About the website</span>
+					This website is a end semester project of web engineering course in the fourth semester of bachelors of science in computer science.
+				</p>
+			<div class="footer-icons">
+					<a target="_blank" href="https://www.facebook.com/aqsa.mustafa.1"><i class="fa fa-facebook"></i></a>
+					<a target="_blank" href="https://twitter.com/aqsaaa111"><i class="fa fa-twitter"></i></a>
+					<a target="_blank" href="https://www.instagram.com/aqsa.mustafa1/"><i class="fa fa-instagram"></i></a>
+				</div>
+			</div>
+		</footer>
 
-					
-
-				}// end of for loop
-				$(".hidden").hide();
-					$(".songs-list").css(
-					{
-						"padding-top":"100px",
-					})
-
-				$(".song").css(
-				{
-					"padding":"7px",
-					
-					"text-align":"justify",
-					"text-transform": "capitalize",
-					"letter-spacing":"3px",
-					"line-height": "1.6",
-					//"justify-content":"center",
-				})// end of songs css
-				$(".item-image").css(
-				{
-					"padding":"20px 0px",
-				})
-
-				$('.song').addClass('wow fadeInRight');	
-
-				$(".song").on("click",function()
-				{
-						$(".youtube").html("");
-					/*	$(".youtube").append('<iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"</iframe>');*/
-						for(i=0;i<length;i++)
-						{
-							item=json.newreleases.track[i];
-							if($(this).find(".hidden").html()==i)
-							{
-								$(".youtube").append('<iframe width="420" height="345" src="'+item.url+'"</iframe>');
-							//	$(".youtube").append('<iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>');
-							}
-						}
-				})
-				$(".youtube").css(
-				{
-					"position":"absolute",
-					"bottom":"0",
-					"right":"0",
-					"z-index":"300",
-				})
-
-			}) // end of json method
-
-		} // end of display function
-
-	})// end of ready function
-</script>
-<script>
-
-new WOW().init();
-
-</script>
+<!--
+<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+.back-to-top {
+    cursor: pointer;
+    position: sticky !important;
+    left:96% !important;
+    bottom:10px !important;
+   
+}-->
 </body>
 </html>
