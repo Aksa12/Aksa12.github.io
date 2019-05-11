@@ -37,7 +37,7 @@
                     </ul>
                 </li>
                 <li><a class="nav-link" href="index.html#footer">About me</a></li>
-                <li><a class="nav-link" href="#">Feedback Form</a></li> 
+                <li><a class="nav-link" target="_blank" href="feedback_form.php">Feedback Form</a></li> 
                 <li <a class="active"><a class="active nav-link" href="search_song.html"><i class="glyphicon glyphicon-search"></i></a></li>  
             </ul>               
             
@@ -91,54 +91,57 @@
             console.log(song);
             $.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=e292f7273e2ec29065bf3e11f2836d29&artist="+name+"&track="+song+"&format=json",function(json)
             {
-                item=json.track;
-                if (item.album==undefined) // if the song album is not available in json file
+                if(json.error==undefined) // if correct name is enteres
                 {
-                     it_image=" ";
-                     it_album_title="NA";
-                }
-                else
-                {
-                        if((item.album.image)==undefined) // if the song album image is not available in json file
+                    console.log(json);
+                    item=json.track;
+                    if (item.album==undefined) // if the song album is not available in json file
                     {
-                        it_image=" ";
+                         it_image=" ";
+                         it_album_title="NA";
                     }
                     else
-                        it_image=item.album.image[3]["#text"]; 
+                    {
+                            if((item.album.image)==undefined) // if the song album image is not available in json file
+                        {
+                            it_image=" ";
+                        }
+                        else
+                            it_image=item.album.image[3]["#text"]; 
 
-                        if(item.album.title==undefined) // if the song album title is not available in json file
-                    {
-                       it_album_title="NA";
-                    }
-                    else
-                        it_album_title=item.album.title;
-                }    
-                
-                if(item.toptags==undefined) // if the tags information is not available in the json file
-                {
-                    it_genre="NA";
+                            if(item.album.title==undefined) // if the song album title is not available in json file
+                        {
+                           it_album_title="NA";
+                        }
+                        else
+                            it_album_title=item.album.title;
+                    }    
                     
-                }
-                else
-                {
-                    if(item.toptags.tag[0]==undefined) // if the genre is not available
+                    if(item.toptags==undefined) // if the tags information is not available in the json file
+                    {
                         it_genre="NA";
+                        
+                    }
                     else
-                      it_genre=item.toptags.tag[0].name;  
-                }
-                
-                if(item.wiki==undefined) // if the content is not available in the json file
-                {
-                     it_content="";
-                }
-                else
-                    it_content=item.wiki.content;
+                    {
+                        if(item.toptags.tag[0]==undefined) // if the genre is not available
+                            it_genre="NA";
+                        else
+                          it_genre=item.toptags.tag[0].name;  
+                    }
+                    
+                    if(item.wiki==undefined) // if the content is not available in the json file
+                    {
+                         it_content="";
+                    }
+                    else
+                        it_content=item.wiki.content;
 
 
-                // appending the songs result
-                $(".search-result-content").append('<div class="search-result-img col-lg-4"><img src="'+it_image+'"></div><div class="col-lg-8"><ul class="details"><li>Song Name: '+item.name+'</li><li>Artist: '+item.artist.name+'</li><li>Album: '+it_album_title+'</li><li>Listeners: '+item.listeners+'</li><li>Genre: '+it_genre+'</li><li>'+it_content+'</li></ul></div></div>');
+                    // appending the songs result
+                    $(".search-result-content").append('<div class="search-result-img col-lg-4"><img src="'+it_image+'"></div><div class="col-lg-8"><ul class="details"><li>Song Name: '+item.name+'</li><li>Artist: '+item.artist.name+'</li><li>Album: '+it_album_title+'</li><li>Listeners: '+item.listeners+'</li><li>Genre: '+it_genre+'</li><li>'+it_content+'</li></ul></div></div>');
 
-            })// end of json method
+            
 
             $(".search-result-content").css( //styling
             {
@@ -148,8 +151,13 @@
                 "text-align": "left",
                 "color":"white",
 
-            })    
-            
+            })
+            }// end of if statement if the correct name is entered
+            else // if correct name is not entered
+                {
+                    $(".search-result-content").append('<h2 style="color:deeppink;text-align:center;">Pls make sure to type in the correct artist name and song</h2>');
+                }    
+            })// end of json method
         })// end of search submit click function
     })  // end of ready function
 </script>

@@ -45,6 +45,11 @@ color:white !important;
 color:deeppink !important;
 background-color:#222 !important;	
 }
+.carousel,.carousel-inner
+{
+overflow:hidden !important;
+overflow-y: auto !important;	
+}
 .carousel-inner .item img
 {
 	
@@ -306,7 +311,6 @@ a
 	width:200px;
 	margin-top: 70px;
 	height: 20px;
-	z-index: 400;
 }
 
 /* Footer Center */
@@ -359,7 +363,7 @@ a
 .footer-distributed .footer-right{
 	width: 20%;
 }
-.footer-distributed .footer-company-about{
+.footer-distributed .footer-website-about{
 	line-height: 20px;
 	color:  #92999f;
 	font-size: 13px;
@@ -367,7 +371,7 @@ a
 	margin: 0;
 }
 
-.footer-distributed .footer-company-about span{
+.footer-distributed .footer-website-about span{
 	display: block;
 	color:  #dc2878;
 	font-size: 14px;
