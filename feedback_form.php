@@ -118,7 +118,7 @@
 						<li><a target="_blank" href="top_albums.html">Top Albums</a></li>
 					</ul>
 				</li>
-				<li><a class="nav-link" href="#footer">About me</a></li>
+				<li><a class="nav-link" href="#footer">About</a></li>
 				<li class="active"><a class="nav-link" href="Feedback_form.php">Feedback Form</a></li>	
 				<li><a class="nav-link" href="search_song.html"><i class="glyphicon glyphicon-search"></i></a></li>	
 			</ul>     			
