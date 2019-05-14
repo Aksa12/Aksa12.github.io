@@ -58,11 +58,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $rate = test_input($_POST["rate"]);
   }
 
-if($name!=""&&$email!=""&&$subject!=""&&$comment!="")
+if($name!=""&&$email!=""&&$subject!=""&&$comment!=""&&$rate!="")
 {
 
 	$myfile=fopen("example.txt","a");
-	$feedback=$name.' '.$email.' '.$subject.' '.$comment."\r\n";
+	$feedback=$name.' '.$email.' '.$subject.' '.$comment.' '.$rate."\r\n";
 	fwrite($myfile,$feedback);
 	fclose($myfile);
 /*

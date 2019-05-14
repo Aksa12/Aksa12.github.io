@@ -129,7 +129,7 @@
 
 
 	<div class="feedback-heading container-fluid">
-	<h1 class="wow slideInRight">Feedback Form</h1>
+	<h1 class="wow slideInRight" data-wow-delay="1.5s">Feedback Form</h1>
 	<div class="feedback-content container">
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 		<div class="row">
@@ -163,6 +163,7 @@
  		 	<input type="radio" name="rate" <?php if (isset($rate) && $rate=="good") echo "checked";?> value="good">Good
   			<input type="radio" name="rate" <?php if (isset($rate) && $rate=="average") echo "checked";?> value="average">Average
   			<input type="radio" name="rate" <?php if (isset($rate) && $rate=="poor") echo "checked";?> value="poor">Poor
+  			<span class="error">* <?php echo $rateErr;?></span>
 		</div>
 		</div>
 		<br><br>
